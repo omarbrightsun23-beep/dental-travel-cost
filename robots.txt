@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dentaltravelcost.com/sitemap.xml
