@@ -53,9 +53,18 @@ export const Footer: React.FC<FooterProps> = ({
             <p className="text-slate-400 max-w-md leading-relaxed text-xs">
               The independent international procedure cost benchmark and patient protection registry. We provide unbiased, all-in cost transparency factoring clinic fees, return flights, recovery accommodations, and verified JCI/ISO clinical accreditations.
             </p>
-            <div className="pt-2 text-[11px] text-slate-500">
+            <div className="pt-2 text-[11px] text-slate-500 space-y-0.5">
               <p>📍 1000 Brickell Ave, Suite 710, Miami, FL 33131</p>
               <p>📞 Patient Desk: (555) 567-8901 · Daily 7am–9pm EST</p>
+              <p>
+                ✉️ Inquiries:{' '}
+                <a
+                  href="mailto:contact@dentaltravelcost.com"
+                  className="text-blue-400 hover:text-blue-300 hover:underline"
+                >
+                  contact@dentaltravelcost.com
+                </a>
+              </p>
             </div>
           </div>
 
@@ -314,9 +323,14 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom copyright & disclaimers with explicit policy links */}
         <div className="pt-8 flex flex-col lg:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
-          <p className="text-center lg:text-left max-w-2xl leading-relaxed">
-            © 2026 DentalTravelCost Procedure Index. All Rights Reserved. Financial estimations and procedural averages are provided for educational and planning purposes only and do not constitute formal medical or dental advice.
-          </p>
+          <div className="text-center lg:text-left max-w-2xl leading-relaxed space-y-1.5">
+            <p>
+              © 2026 DentalTravelCost Procedure Index. All Rights Reserved. Financial estimations and procedural averages are provided for educational and planning purposes only and do not constitute formal medical or dental advice.
+            </p>
+            <p className="text-slate-400 text-[11px] bg-slate-900/40 p-2.5 rounded-xl border border-slate-800/80">
+              <strong className="text-slate-300">Disclosure:</strong> DentalTravelCost is an independent healthcare cost benchmark. We may receive referral compensation from accredited clinic partners or medical travel networks when you book a consultation, at zero additional cost to you.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-medium text-slate-400">
             <a
               href="/privacy-policy"

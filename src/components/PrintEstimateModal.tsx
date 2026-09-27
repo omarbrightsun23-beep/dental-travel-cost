@@ -65,7 +65,7 @@ DOMESTIC HOME CLINIC BENCHMARK: ${result.symbol}${result.domesticTotal.toLocaleS
 GUARANTEED NET SAVINGS:         ${result.symbol}${result.netSavings.toLocaleString()} (Save ${result.savingsPercent}%)
 =====================================================
 QUALITY STANDARDS: JCI Accredited · ISO 9001:2015 · Genuine Straumann / Nobel Biocare Passports.
-DentalTravelCost Patient Desk: (555) 567-8901 | coordination@dentaltravelcost.com
+DentalTravelCost Patient Desk: (555) 567-8901 | contact@dentaltravelcost.com
 `;
   };
 
@@ -193,7 +193,7 @@ DentalTravelCost Patient Desk: (555) 567-8901 | coordination@dentaltravelcost.co
 
   <div class="footer">
     <p><strong>Clinical Standards:</strong> Verified against JCI-accredited surgical hospitals deploying genuine Straumann / Nobel Biocare titanium fixtures with international warranty passports.</p>
-    <p>DentalTravelCost Coordination: (555) 567-8901 | coordination@dentaltravelcost.com</p>
+    <p>DentalTravelCost Coordination: (555) 567-8901 | contact@dentaltravelcost.com</p>
   </div>
 </body>
 </html>`;

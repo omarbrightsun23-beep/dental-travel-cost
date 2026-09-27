@@ -53,15 +53,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
               </a>
 
               <a
-                href="mailto:coordination@dentaltravelcost.com"
+                href="mailto:contact@dentaltravelcost.com"
                 className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#0B132B] border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:border-emerald-500 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 group cursor-pointer"
               >
                 <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white group-hover:scale-105 transition-all">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold">Clinical Case Submissions</span>
-                  <span className="font-semibold text-slate-900 dark:text-white text-xs group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">coordination@dentaltravelcost.com</span>
+                  <span className="text-[10px] text-slate-500 block uppercase font-bold">Direct Email & Records Review</span>
+                  <span className="font-semibold text-slate-900 dark:text-white text-xs group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">contact@dentaltravelcost.com</span>
                 </div>
               </a>
 

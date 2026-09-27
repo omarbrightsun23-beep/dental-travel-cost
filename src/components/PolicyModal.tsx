@@ -324,7 +324,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
               <section className="p-4 rounded-2xl bg-slate-50 dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 space-y-1.5 text-xs">
                 <div className="font-bold text-slate-900 dark:text-white">Data Protection Officer & Privacy Inquiries:</div>
                 <p className="text-slate-600 dark:text-slate-400">
-                  Email: <a href="mailto:privacy@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">privacy@dentaltravelcost.com</a>
+                  Email: <a href="mailto:contact@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 font-semibold underline">contact@dentaltravelcost.com</a>
                 </p>
                 <p className="text-slate-500">Mailing Address: DentalTravelCost Global Compliance Desk, 1000 Brickell Ave, Suite 710, Miami, FL 33131, United States.</p>
               </section>
@@ -462,6 +462,19 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                 </p>
               </section>
 
+              <section className="space-y-3 p-4 sm:p-5 rounded-2xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800/80">
+                <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 text-xs font-black flex items-center justify-center">4</span>
+                  FTC Affiliate & Referral Compensation Disclosure
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium">
+                  <strong>Disclosure:</strong> DentalTravelCost is an independent healthcare cost benchmark. We may receive referral compensation from accredited clinic partners or medical travel networks when you book a consultation, at zero additional cost to you.
+                </p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  This referral compensation supports our continuous fee surveys, clinic credential verifications, and patient desk operations while ensuring complete open access for patients free of charge.
+                </p>
+              </section>
+
               <section className="p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 space-y-2">
                 <div className="font-bold text-red-900 dark:text-red-200 text-sm flex items-center gap-2">
                   <AlertTriangle className="w-4 h-4 text-red-600 dark:text-red-400" />
@@ -582,28 +595,16 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                     <div className="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
                       <Mail className="w-4 h-4" />
                     </div>
-                    Dedicated Email Desks
+                    Official Email Desk
                   </div>
-                  <ul className="text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
-                    <li>
-                      • <strong>Clinical Cases:</strong>{' '}
-                      <a href="mailto:coordination@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 underline font-medium">
-                        coordination@dentaltravelcost.com
-                      </a>
-                    </li>
-                    <li>
-                      • <strong>General & Press:</strong>{' '}
-                      <a href="mailto:contact@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 underline font-medium">
-                        contact@dentaltravelcost.com
-                      </a>
-                    </li>
-                    <li>
-                      • <strong>Privacy & Legal:</strong>{' '}
-                      <a href="mailto:compliance@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 underline font-medium">
-                        compliance@dentaltravelcost.com
-                      </a>
-                    </li>
-                  </ul>
+                  <p className="text-xs text-slate-600 dark:text-slate-400">
+                    For patient inquiries, clinical scan reviews, general questions, and compliance matters:
+                  </p>
+                  <p className="text-xs">
+                    <a href="mailto:contact@dentaltravelcost.com" className="text-blue-600 dark:text-blue-400 underline font-semibold text-sm">
+                      contact@dentaltravelcost.com
+                    </a>
+                  </p>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 space-y-2">
