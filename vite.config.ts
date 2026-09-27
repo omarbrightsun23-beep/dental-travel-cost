@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
@@ -8,6 +9,25 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(() => {
+  const inputEntries: Record<string, string> = {
+    main: path.resolve(__dirname, 'index.html'),
+  };
+
+  const optionalPages = [
+    { key: 'about', relPath: 'about/index.html' },
+    { key: 'privacyPolicy', relPath: 'privacy-policy/index.html' },
+    { key: 'termsAndConditions', relPath: 'terms-and-conditions/index.html' },
+    { key: 'disclaimer', relPath: 'disclaimer/index.html' },
+    { key: 'contact', relPath: 'contact/index.html' },
+  ];
+
+  for (const page of optionalPages) {
+    const fullPath = path.resolve(__dirname, page.relPath);
+    if (fs.existsSync(fullPath)) {
+      inputEntries[page.key] = fullPath;
+    }
+  }
+
   return {
     plugins: [react(), tailwindcss()],
     resolve: {
@@ -17,14 +37,7 @@ export default defineConfig(() => {
     },
     build: {
       rollupOptions: {
-        input: {
-          main: path.resolve(__dirname, 'index.html'),
-          about: path.resolve(__dirname, 'about/index.html'),
-          privacyPolicy: path.resolve(__dirname, 'privacy-policy/index.html'),
-          termsAndConditions: path.resolve(__dirname, 'terms-and-conditions/index.html'),
-          disclaimer: path.resolve(__dirname, 'disclaimer/index.html'),
-          contact: path.resolve(__dirname, 'contact/index.html'),
-        },
+        input: inputEntries,
       },
     },
     server: {
@@ -36,3 +49,4 @@ export default defineConfig(() => {
     },
   };
 });
+
