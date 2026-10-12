@@ -24,15 +24,51 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const [travelTimeline, setTravelTimeline] = useState('within_3_months');
   const [notes, setNotes] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   if (!isOpen) return null;
 
   const targetProcedure = initialData?.procedureName || procedureHint || 'All-on-4 Dental Implants';
   const targetDestination = initialData?.destinationName || destinationHint || 'Mexico (Los Algodones)';
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Free lead delivery: posts the quote request to the site owner's inbox.
+  // No backend required. First submission triggers a one-click activation email.
+  const LEAD_ENDPOINT = 'https://formsubmit.co/ajax/omarbrightsun23@gmail.com';
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(false);
+    try {
+      const res = await fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `New quote request: ${targetProcedure} — ${targetDestination}`,
+          _template: 'table',
+          _captcha: 'false',
+          'Full name': fullName,
+          'Email': email,
+          'Phone / WhatsApp': phone,
+          'Procedure': targetProcedure,
+          'Destination': targetDestination,
+          'Has X-rays / CT scans': hasScans,
+          'Travel window': travelTimeline,
+          'Clinical notes': notes || '—',
+          'Estimated savings': initialData
+            ? `${initialData.symbol}${initialData.netSavings.toLocaleString()} (-${initialData.savingsPercent}%)`
+            : '—',
+          'Source page': 'dentaltravelcost.com',
+        }),
+      });
+      if (!res.ok) throw new Error(`lead post failed: ${res.status}`);
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleResetAndClose = () => {
@@ -169,11 +205,17 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
               <button
                 type="submit"
-                className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-xl transition-all duration-200 shadow-sm shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm mt-2 cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-xl transition-all duration-200 shadow-sm shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm mt-2 cursor-pointer disabled:opacity-60 disabled:cursor-wait disabled:hover:translate-y-0"
               >
                 <Send className="w-4 h-4" />
-                Submit Consultation Request
+                {isSubmitting ? 'Sending your request…' : 'Submit Consultation Request'}
               </button>
+              {submitError && (
+                <p className="text-[11px] text-red-600 dark:text-red-400 leading-snug">
+                  Something went wrong sending your request. Please try again in a moment — your details were not lost.
+                </p>
+              )}
             </form>
           </div>
         ) : (
