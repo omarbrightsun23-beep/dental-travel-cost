@@ -26,7 +26,7 @@ import { CompareAllModal } from './components/CompareAllModal';
 import { PolicyModal, PolicyTab } from './components/PolicyModal';
 import { Shield, ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
 
-const ROTATING_WORDS = ['Count On', 'Rely On', 'Trust In', 'Depend On', 'Verify'];
+const ROTATING_WORDS = ['Count On', 'Rely On', 'Trust', 'Depend On', 'Verify'];
 
 export default function App() {
   const [currentCurrency, setCurrentCurrency] = useState<CurrencyCode>('USD');
