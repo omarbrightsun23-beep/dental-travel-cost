@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+
 import { CurrencyCode, CalculationResult } from './types';
 import { CURRENCIES, DEFAULT_DESTINATION_FOR_ORIGIN, DESTINATIONS, PROCEDURES } from './data/procedures';
 import { Header } from './components/Header';
@@ -7,6 +8,7 @@ import { DestinationMatrix } from './components/DestinationMatrix';
 import { BenchmarkTableSection } from './components/BenchmarkTableSection';
 import { CorridorsSection } from './components/CorridorsSection';
 import { StaySection } from './components/StaySection';
+import { TravelInsuranceSection } from './components/TravelInsuranceSection';
 import { SemanticClinicalGuide } from './components/SemanticClinicalGuide';
 import { TreatmentTimeline } from './components/TreatmentTimeline';
 import { SafetyChecklist } from './components/SafetyChecklist';
@@ -465,8 +467,10 @@ export default function App() {
           </Reveal>
         </section>
 
-        {/* Recovery Accommodation: Where-to-stay hotel widget */}
+                      {/* Recovery Accommodation: Where-to-stay hotel widget */}
         <Reveal><StaySection /></Reveal>
+        {/* Travel Protection: Travel medical insurance widget */}
+              <Reveal><TravelInsuranceSection /></Reveal>
 
         {/* Pricing: Global Destination Comparison Matrix */}
         <section id="pricing" className="scroll-mt-24">
