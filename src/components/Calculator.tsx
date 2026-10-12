@@ -123,8 +123,12 @@ export const Calculator: React.FC<CalculatorProps> = ({
   // Numerical Calculations
   const unitsMultiplier = selectedProcedureId === 'single_implant' ? toothUnits : 1;
 
-  // Base Domestic
-  let domesticPrice = Math.round((procedure.domesticUSD[currentCurrency] || 25000) * unitsMultiplier * rate);
+  // Base Domestic — domesticUSD values are already in the home currency (native),
+  // so no FX conversion. The 25000 fallback is a USD estimate, converted as such.
+  const domesticNative = procedure.domesticUSD[currentCurrency];
+  let domesticPrice = domesticNative != null
+    ? Math.round(domesticNative * unitsMultiplier)
+    : Math.round(25000 * unitsMultiplier * rate);
   const customVal = parseFloat(customDomesticQuote);
   const isCustomQuoteActive = !isNaN(customVal) && customVal > 0;
   if (isCustomQuoteActive) {
@@ -135,10 +139,14 @@ export const Calculator: React.FC<CalculatorProps> = ({
   const abroadBaseUSD = (procedure.abroadUSD[destination.id] || 5000) * unitsMultiplier;
   const abroadSurgeryFee = Math.round(abroadBaseUSD * rate);
 
-  // Flights
-  const singleTripFlightUSD = destination.flightCostUSD[currentCurrency] || destination.flightCostUSD.USD || 700;
+  // Flights — flightCostUSD values are researched native-currency fares per home
+  // country, so no FX conversion. The USD/700 fallback is USD-based, converted.
+  const flightNative = destination.flightCostUSD[currentCurrency];
+  const singleTripFlightNative = flightNative != null
+    ? flightNative
+    : Math.round((destination.flightCostUSD.USD || 700) * rate);
   const passengerCount = hasCompanion ? 2 : 1;
-  const totalFlights = Math.round(singleTripFlightUSD * passengerCount * tripsMode * rate);
+  const totalFlights = Math.round(singleTripFlightNative * passengerCount * tripsMode);
 
   // Accommodation
   const nightlyUSD = destination.hotelRatesUSD[hotelTier] || 85;
@@ -189,7 +197,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
   const pctSurgery = Math.round((abroadSurgeryFee / totalAbroad) * 100);
   const pctFlights = Math.round((totalFlights / totalAbroad) * 100);
   const pctHotel = Math.round((totalHotel / totalAbroad) * 100);
-  const pctMisc = Math.max(1, 100 - pctSurgery - pctFlights - pctHotel);
+  const pctMisc = Math.max(0, 100 - pctSurgery - pctFlights - pctHotel);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -327,7 +335,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
             <div className="flex justify-between items-center text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 mb-1.5">
               <span>Recovery Hotel Stay</span>
               <span className="text-blue-600 dark:text-blue-400 font-extrabold text-sm">
-                {hotelNights} Nights
+                {hotelNights} Nights / trip
               </span>
             </div>
             <input
@@ -669,7 +677,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
           <button
             type="button"
             onClick={() => onOpenPrintModal(calculationResult)}
-            className="py-3 px-4 rounded-xl bg-white dark:bg-[#111C38] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer"
+            className="py-3 px-4 rounded-xl bg-white dark:bg-[#111C38] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer active:scale-[0.97]"
           >
             <FileSpreadsheet className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Print / Save</span>
@@ -678,7 +686,7 @@ export const Calculator: React.FC<CalculatorProps> = ({
           <button
             type="button"
             onClick={onOpenCompareModal}
-            className="py-3 px-4 rounded-xl bg-white dark:bg-[#111C38] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer"
+            className="py-3 px-4 rounded-xl bg-white dark:bg-[#111C38] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-200 transition flex items-center justify-center gap-2 shadow-xs hover:shadow-sm cursor-pointer active:scale-[0.97]"
           >
             <Globe className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Compare Countries</span>

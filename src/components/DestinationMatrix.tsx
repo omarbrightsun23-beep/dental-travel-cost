@@ -23,7 +23,9 @@ export const DestinationMatrix: React.FC<DestinationMatrixProps> = ({
   const rate = fxRates[currentCurrency] || CURRENCIES[currentCurrency].defaultRate;
   const symbol = CURRENCIES[currentCurrency].symbol;
 
-  const domesticPrice = Math.round((procedure.domesticUSD[currentCurrency] || 25000) * rate);
+  // domesticUSD values are native home-currency prices (no FX conversion).
+  const domesticNative = procedure.domesticUSD[currentCurrency];
+  const domesticPrice = domesticNative != null ? Math.round(domesticNative) : Math.round(25000 * rate);
 
   const filteredDestinations = DESTINATIONS.filter((dest) => {
     if (filterRegion === 'all') return true;
@@ -91,8 +93,11 @@ export const DestinationMatrix: React.FC<DestinationMatrixProps> = ({
         {filteredDestinations.map((dest) => {
           const abroadUSD = procedure.abroadUSD[dest.id] || 5000;
           const abroadPrice = Math.round(abroadUSD * rate);
-          const flightUSD = dest.flightCostUSD[currentCurrency] || dest.flightCostUSD.USD || 700;
-          const flightPrice = Math.round(flightUSD * rate);
+          // flightCostUSD values are native-currency fares (no FX conversion).
+          const flightNative = dest.flightCostUSD[currentCurrency];
+          const flightPrice = flightNative != null
+            ? Math.round(flightNative)
+            : Math.round((dest.flightCostUSD.USD || 700) * rate);
           const hotelPrice = Math.round(dest.hotelRatesUSD.premium * 6 * rate);
           const miscPrice = Math.round(250 * rate);
           const allInTotal = abroadPrice + flightPrice + hotelPrice + miscPrice;

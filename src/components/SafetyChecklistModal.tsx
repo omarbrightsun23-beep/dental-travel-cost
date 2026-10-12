@@ -1,3 +1,4 @@
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import React from 'react';
 import { SAFETY_CHECKLIST_ITEMS } from '../data/faqs';
 import { X, ShieldCheck, CheckCircle2 } from 'lucide-react';
@@ -11,11 +12,14 @@ export const SafetyChecklistModal: React.FC<SafetyChecklistModalProps> = ({
   isOpen,
   onClose
 }) => {
+  useEscapeKey(isOpen, onClose);
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="max-w-xl w-full bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[85vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      onClick={onClose}>
+      <div className="max-w-xl w-full bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[85vh] overflow-y-auto animate-scale-in"
+      onClick={(e) => e.stopPropagation()}>
         
         <button
           onClick={onClose}

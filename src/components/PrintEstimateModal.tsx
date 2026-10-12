@@ -1,3 +1,4 @@
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import React, { useState } from 'react';
 import { CalculationResult } from '../types';
 import { X, Printer, Download, Copy, Check, FileText, ShieldCheck } from 'lucide-react';
@@ -16,6 +17,8 @@ export const PrintEstimateModal: React.FC<PrintEstimateModalProps> = ({
   const [copied, setCopied] = useState(false);
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [printError, setPrintError] = useState<string | null>(null);
+
+  useEscapeKey(isOpen, onClose);
 
   if (!isOpen || !result) return null;
 
@@ -216,8 +219,10 @@ DentalTravelCost: contact@dentaltravelcost.com
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="max-w-2xl w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 print:border-none print:shadow-none print:bg-white print:text-black">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      onClick={onClose}>
+      <div className="max-w-2xl w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 animate-scale-in print:border-none print:shadow-none print:bg-white print:text-black"
+      onClick={(e) => e.stopPropagation()}>
         
         {/* Close Button */}
         <button

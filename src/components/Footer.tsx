@@ -99,11 +99,11 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a
-                  href="#testimonials"
-                  onClick={(e) => handleScrollTo(e, 'testimonials')}
+                  href="#trust"
+                  onClick={(e) => handleScrollTo(e, 'trust')}
                   className="hover:text-blue-400 hover:translate-x-0.5 transition-all text-left cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  <span>Patient Testimonials</span>
+                  <span>Why Trust Us</span>
                 </a>
               </li>
               <li>

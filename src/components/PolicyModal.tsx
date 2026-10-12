@@ -1,3 +1,4 @@
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import React, { useState, useEffect } from 'react';
 import {
   X,
@@ -60,6 +61,8 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
     };
   }, [isOpen]);
 
+  useEscapeKey(isOpen, onClose);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -67,8 +70,10 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-white dark:bg-[#0B132B] border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden my-auto flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-fade-in"
+      onClick={onClose}>
+      <div className="relative w-full max-w-4xl bg-white dark:bg-[#0B132B] border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden my-auto flex flex-col max-h-[92vh] animate-scale-in"
+        onClick={(e) => e.stopPropagation()}>
         
         {/* Header Bar */}
         <div className="border-b border-slate-200 dark:border-slate-800 p-4 sm:p-6 bg-slate-50/80 dark:bg-[#111C38]/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shrink-0">
