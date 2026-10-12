@@ -6,6 +6,7 @@ import { Calculator } from './components/Calculator';
 import { DestinationMatrix } from './components/DestinationMatrix';
 import { BenchmarkTableSection } from './components/BenchmarkTableSection';
 import { CorridorsSection } from './components/CorridorsSection';
+import { StaySection } from './components/StaySection';
 import { SemanticClinicalGuide } from './components/SemanticClinicalGuide';
 import { TreatmentTimeline } from './components/TreatmentTimeline';
 import { SafetyChecklist } from './components/SafetyChecklist';
@@ -462,6 +463,9 @@ export default function App() {
             onOpenPolicy={handleOpenPolicy}
           />
         </section>
+
+        {/* Recovery Accommodation: Where-to-stay hotel widget */}
+        <StaySection />
 
         {/* Pricing: Global Destination Comparison Matrix */}
         <section id="pricing" className="scroll-mt-24">
