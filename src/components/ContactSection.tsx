@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Send, CheckCircle2, MessageSquare, Clock, Lock } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, MessageSquare, Clock, Lock } from 'lucide-react';
 import { PolicyTab } from './PolicyModal';
 
 interface ContactSectionProps {
@@ -11,10 +11,34 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
   const [contact, setContact] = useState('');
   const [message, setMessage] = useState('');
   const [isSent, setIsSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSent(true);
+    setIsSending(true);
+    setSendError(false);
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/contact@dentaltravelcost.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `Contact form message from ${name}`,
+          _template: 'table',
+          _captcha: 'false',
+          'Name': name,
+          'Contact': contact,
+          'Message': message,
+          'Source page': 'dentaltravelcost.com contact section',
+        }),
+      });
+      if (!res.ok) throw new Error(`contact post failed: ${res.status}`);
+      setIsSent(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -31,27 +55,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
                 Patient Desk & Direct Lines
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Talk to a Patient Coordinator
+                Contact Us
               </h2>
               <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-                Have questions about border crossings, surgeon credentials, or sending your panoramic CT scan? Our medical travel desk is on call 7 days a week.
+                Questions about a treatment route, the calculator, or the data behind our estimates? Send a message — we reply within one business day.
               </p>
             </div>
 
             <div className="space-y-4 text-xs text-slate-700 dark:text-slate-300">
-              <a
-                href="tel:15555678901"
-                className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#0B132B] border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:border-blue-500 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 group cursor-pointer"
-              >
-                <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 transition-all">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-slate-500 block uppercase font-bold">Direct North American Toll-Free</span>
-                  <span className="font-extrabold text-slate-900 dark:text-white text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">(555) 567-8901</span>
-                </div>
-              </a>
-
               <a
                 href="mailto:contact@dentaltravelcost.com"
                 className="p-3.5 rounded-2xl bg-slate-50 dark:bg-[#0B132B] border border-slate-200 dark:border-slate-800 flex items-center gap-3 hover:border-emerald-500 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.99] transition-all duration-200 group cursor-pointer"
@@ -82,7 +93,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
             {!isSent ? (
               <form onSubmit={handleSubmit} className="space-y-3.5 text-xs">
                 <h3 className="font-bold text-slate-900 dark:text-white text-base">
-                  Request an Immediate Callback or Case Evaluation
+                  Send Us a Message
                 </h3>
                 
                 <div>
@@ -123,11 +134,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
 
                 <button
                   type="submit"
-                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-xl transition-all duration-200 shadow-sm shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm cursor-pointer"
+                  disabled={isSending}
+                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white font-bold rounded-xl transition-all duration-200 shadow-sm shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/30 hover:-translate-y-0.5 flex items-center justify-center gap-2 text-sm cursor-pointer disabled:opacity-60 disabled:cursor-wait"
                 >
                   <Send className="w-4 h-4" />
-                  Submit Callback Request
+                  {isSending ? 'Sending…' : 'Send Message'}
                 </button>
+                {sendError && (
+                  <p className="text-[11px] text-red-600 dark:text-red-400 leading-snug">
+                    Something went wrong sending your message. Please try again or email us directly at contact@dentaltravelcost.com.
+                  </p>
+                )}
 
                 <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 dark:text-slate-500 pt-1 text-center">
                   <Lock className="w-3 h-3 text-slate-400 shrink-0" />
@@ -157,7 +174,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenPolicy }) 
                 </div>
                 <h4 className="font-extrabold text-slate-900 dark:text-white text-lg">Message Delivered</h4>
                 <p className="text-xs text-slate-600 dark:text-slate-400 max-w-sm mx-auto">
-                  Thank you, <strong>{name}</strong>. A patient coordinator will phone or WhatsApp you at <strong>{contact}</strong> shortly.
+                  Thank you, <strong>{name}</strong>. We've received your message and will reply within one business day.
                 </p>
                 <button
                   type="button"

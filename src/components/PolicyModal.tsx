@@ -582,12 +582,12 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({
                     Patient Intake & Corridor Guidance:
                   </p>
                   <a
-                    href="tel:15555678901"
+                    href="mailto:contact@dentaltravelcost.com"
                     className="text-base font-extrabold text-blue-600 dark:text-blue-400 hover:underline block"
                   >
-                    (555) 567-8901
+                    contact@dentaltravelcost.com
                   </a>
-                  <span className="text-[11px] text-slate-400 block">Mon–Fri: 7:00 AM – 9:00 PM EST · Sat–Sun: 9:00 AM – 6:00 PM EST</span>
+                  <span className="text-[11px] text-slate-400 block">We reply within one business day.</span>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 space-y-2">
