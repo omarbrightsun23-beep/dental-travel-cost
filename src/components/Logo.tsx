@@ -1,0 +1,33 @@
+import React from 'react';
+
+interface LogoMarkProps {
+  className?: string;
+}
+
+/**
+ * DentalTravelCost mark: a confident molar over a smile-route —
+ * the amber arc is both a smile and a journey from origin to destination.
+ */
+export const LogoMark: React.FC<LogoMarkProps> = ({ className = 'w-8 h-8' }) => (
+  <svg viewBox="0 0 32 32" fill="none" className={className} aria-hidden="true">
+    <defs>
+      <linearGradient id="dtc-logo-g" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stopColor="#14b8a6" />
+        <stop offset="1" stopColor="#2563eb" />
+      </linearGradient>
+    </defs>
+    <rect width="32" height="32" rx="8" fill="url(#dtc-logo-g)" />
+    <path
+      d="M11.8 4.8c-1 0-1.9-.5-3-.5-1.4 0-2.4.9-2.9 2.1-.5 1.3-.3 2.8.1 4.1.5 1.4.8 2.8 1 4.3.2 1.5.4 3.1.6 4.8.1 1.2.4 2.8 1.6 2.8 1.4 0 1.2-2.2 1.6-3.8.3-1 .9-2.2 2.1-2.2s1.8 1.2 2.1 2.2c.4 1.6.2 3.8 1.6 3.8 1.2 0 1.5-1.6 1.6-2.8.2-1.7.4-3.3.6-4.8.2-1.5.5-2.9 1-4.3.4-1.3.6-2.8.1-4.1-.5-1.2-1.5-2.1-2.9-2.1-1.1 0-2 .5-3 .5-.9 0-1.7-.4-2.85-.4s-1.95.4-2.85.4z"
+      fill="#fff"
+    />
+    <path
+      d="M6.5 23.5c2.8 2.6 6.3 4 10 4s7.2-1.4 10-4"
+      stroke="#fbbf24"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+    <circle cx="6.5" cy="23.5" r="1.7" fill="#fbbf24" />
+    <circle cx="25.5" cy="23.5" r="1.7" fill="#fbbf24" />
+  </svg>
+);

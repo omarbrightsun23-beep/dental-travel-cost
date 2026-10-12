@@ -3,6 +3,7 @@ import { CurrencyCode } from '../types';
 import { CURRENCIES } from '../data/procedures';
 import { Moon, Sun, Globe, Menu, X, Lock } from 'lucide-react';
 import { PolicyTab } from './PolicyModal';
+import { LogoMark } from './Logo';
 
 interface HeaderProps {
   currentCurrency: CurrencyCode;
@@ -61,19 +62,8 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-2.5 group cursor-pointer"
             aria-label="DentalTravelCost Home"
           >
-            <div className="w-8 h-8 rounded-lg bg-teal-600 flex items-center justify-center text-white shadow-sm group-hover:scale-105 group-hover:shadow-md group-hover:shadow-teal-500/20 transition-all duration-200">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4"
-              >
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
+            <div className="group-hover:scale-105 transition-transform duration-200 drop-shadow-sm">
+              <LogoMark className="w-8 h-8" />
             </div>
             <span className="text-xl font-black tracking-tight text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               DentalTravel<span className="text-blue-600 dark:text-blue-400">Cost</span>
