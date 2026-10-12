@@ -24,6 +24,7 @@ import { MethodologyModal } from './components/MethodologyModal';
 import { SafetyChecklistModal } from './components/SafetyChecklistModal';
 import { CompareAllModal } from './components/CompareAllModal';
 import { PolicyModal, PolicyTab } from './components/PolicyModal';
+import { Reveal } from './components/Reveal';
 import { Shield, ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
 
 const ROTATING_WORDS = ['Count On', 'Rely On', 'Trust', 'Depend On', 'Verify'];
@@ -320,13 +321,13 @@ export default function App() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           
           {/* Centered Pill Badge highlighting the primary tool keyword */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/50 border border-blue-200/80 dark:border-blue-800/50 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs hover:shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-200 cursor-default animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/50 border border-blue-200/80 dark:border-blue-800/50 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs hover:shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-200 cursor-default animate-fade-up">
             <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
             <span>Independent 2026 price comparison · 5 destinations</span>
           </div>
 
           {/* Main Headline with dynamic rotating trust words */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight sm:leading-none">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight sm:leading-none animate-fade-up" style={{ animationDelay: '120ms' }}>
             Dental Travel Cost You Can{' '}
             <span
               className={`inline-block transition-all duration-300 transform text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-sky-400 to-teal-400 drop-shadow-xs ${
@@ -338,12 +339,12 @@ export default function App() {
           </h1>
 
           {/* Subtitle: clear human positioning, no keyword stuffing */}
-          <p className="max-w-3xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          <p className="max-w-3xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal animate-fade-up" style={{ animationDelay: '240ms' }}>
             Compare the <strong>true all-in cost</strong> of dental treatment abroad — procedure, flights, and recovery stay — against your local quote. Transparent 2026 pricing across Mexico, Turkey, Thailand, Costa Rica, and Hungary.
           </p>
 
           {/* Dual Action CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 animate-fade-up" style={{ animationDelay: '360ms' }}>
             <button
               type="button"
               onClick={() => {
@@ -436,6 +437,7 @@ export default function App() {
         
         {/* Coverage: Interactive Calculator Engine */}
         <section id="calculator" className="scroll-mt-24">
+          <Reveal>
           <div className="mb-6">
             <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               Coverage & Calculation Engine
@@ -460,13 +462,15 @@ export default function App() {
             onOpenCompareModal={() => setCompareModalOpen(true)}
             onOpenPolicy={handleOpenPolicy}
           />
+          </Reveal>
         </section>
 
         {/* Recovery Accommodation: Where-to-stay hotel widget */}
-        <StaySection />
+        <Reveal><StaySection /></Reveal>
 
         {/* Pricing: Global Destination Comparison Matrix */}
         <section id="pricing" className="scroll-mt-24">
+          <Reveal>
           <div id="destinations" className="scroll-mt-24">
             <DestinationMatrix
               currentCurrency={currentCurrency}
@@ -475,31 +479,39 @@ export default function App() {
               onOpenQuoteModal={handleOpenQuoteFromMatrix}
             />
           </div>
+          </Reveal>
         </section>
 
         {/* 2026 Global Dental Travel Cost Comparison Benchmarks Table */}
-        <BenchmarkTableSection
-          onSelectRoute={(destId, procId) => handleLoadDestinationInCalc(destId, procId)}
-        />
+        <Reveal>
+          <BenchmarkTableSection
+            onSelectRoute={(destId, procId) => handleLoadDestinationInCalc(destId, procId)}
+          />
+        </Reveal>
 
         {/* Popular Medical Travel Corridors (pSEO Hub Blocks) */}
-        <CorridorsSection
-          onSelectCorridor={(curr, dest, proc) => {
-            setCurrentCurrency(curr);
-            handleLoadDestinationInCalc(dest, proc);
-          }}
-        />
+        <Reveal>
+          <CorridorsSection
+            onSelectCorridor={(curr, dest, proc) => {
+              setCurrentCurrency(curr);
+              handleLoadDestinationInCalc(dest, proc);
+            }}
+          />
+        </Reveal>
 
         {/* Semantic Clinical & Material Reference Guide (Entities & Biomaterials) */}
-        <SemanticClinicalGuide />
+        <Reveal><SemanticClinicalGuide /></Reveal>
 
         {/* Process: 4-Stage Treatment & Claims Timeline */}
         <section id="process" className="scroll-mt-24">
+          <Reveal>
           <TreatmentTimeline />
+          </Reveal>
         </section>
 
         {/* Why Us: Comparison vs DIY Solo Travel */}
         <section id="why-us" className="scroll-mt-24">
+          <Reveal>
           <WhyUsSection
             onOpenQuoteModal={() => {
               setProcedureHint(selectedProcedureId);
@@ -507,38 +519,51 @@ export default function App() {
               setQuoteModalOpen(true);
             }}
           />
+          </Reveal>
         </section>
 
         {/* Services / Safety: 7-Point Patient Protection & Safety Standards */}
         <section id="services" className="scroll-mt-24">
+          <Reveal>
           <div id="safety" className="scroll-mt-24">
             <SafetyChecklist />
           </div>
+          </Reveal>
         </section>
 
         {/* Trust: honest methodology instead of fabricated testimonials */}
         <section id="trust" className="scroll-mt-24">
+          <Reveal>
           <TrustSection onOpenMethodology={() => setMethodologyModalOpen(true)} />
+          </Reveal>
         </section>
 
         {/* About: Independent Healthcare Benchmark */}
         <section id="about" className="scroll-mt-24">
+          <Reveal>
           <AboutSection onOpenPolicy={handleOpenPolicy} />
+          </Reveal>
         </section>
 
         {/* Blog: Patient & Insurance Knowledge Hub */}
         <section id="blog" className="scroll-mt-24">
+          <Reveal>
           <BlogSection />
+          </Reveal>
         </section>
 
         {/* Contact: Dedicated Patient Coordination Desk */}
         <section id="contact" className="scroll-mt-24">
+          <Reveal>
           <ContactSection onOpenPolicy={handleOpenPolicy} />
+          </Reveal>
         </section>
 
         {/* FAQ Section */}
         <section id="faq" className="scroll-mt-24">
+          <Reveal>
           <FAQSection />
+          </Reveal>
         </section>
 
       </main>
