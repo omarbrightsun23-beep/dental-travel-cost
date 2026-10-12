@@ -12,7 +12,7 @@ import { TreatmentTimeline } from './components/TreatmentTimeline';
 import { SafetyChecklist } from './components/SafetyChecklist';
 import { AboutSection } from './components/AboutSection';
 import { WhyUsSection } from './components/WhyUsSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
+import { TrustSection } from './components/TrustSection';
 import { BlogSection } from './components/BlogSection';
 import { ContactSection } from './components/ContactSection';
 import { FAQSection } from './components/FAQSection';
@@ -24,7 +24,7 @@ import { MethodologyModal } from './components/MethodologyModal';
 import { SafetyChecklistModal } from './components/SafetyChecklistModal';
 import { CompareAllModal } from './components/CompareAllModal';
 import { PolicyModal, PolicyTab } from './components/PolicyModal';
-import { Shield, Phone, ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
+import { Shield, ArrowRight, CheckCircle2, TrendingUp } from 'lucide-react';
 
 const ROTATING_WORDS = ['Count On', 'Rely On', 'Trust In', 'Depend On', 'Verify'];
 
@@ -283,13 +283,11 @@ export default function App() {
     setPrintModalOpen(true);
   };
 
-  const handlePhoneClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const contactEl = document.getElementById('contact');
-    if (contactEl) {
-      contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const handleHowItWorksClick = () => {
+    const el = document.getElementById('process');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    window.location.href = 'tel:15555678901';
   };
 
   return (
@@ -324,7 +322,7 @@ export default function App() {
           {/* Centered Pill Badge highlighting the primary tool keyword */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/90 dark:bg-blue-950/50 border border-blue-200/80 dark:border-blue-800/50 text-xs font-semibold text-blue-700 dark:text-blue-300 shadow-xs hover:shadow-sm hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-200 cursor-default animate-fade-in">
             <Shield className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-            <span>#1 Dental Travel Cost Calculator · Trusted by 50,000+ Patients</span>
+            <span>Independent 2026 price comparison · 5 destinations</span>
           </div>
 
           {/* Main Headline with dynamic rotating trust words */}
@@ -339,9 +337,9 @@ export default function App() {
             </span>
           </h1>
 
-          {/* Subtitle integrating the primary domain, tool, and high-ticket procedure keywords */}
+          {/* Subtitle: clear human positioning, no keyword stuffing */}
           <p className="max-w-3xl mx-auto text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
-            The verified <strong>all in dental cost calculator</strong> and <strong>dental tourism cost calculator with flights</strong>. Determine the <strong>true cost of dental implants abroad</strong>—accurately benchmarking <strong>All on 4 Turkey cost with flights and hotel</strong>, <strong>dental implants Mexico price breakdown</strong>, and Thailand restorations against domestic private dental quotes.
+            Compare the <strong>true all-in cost</strong> of dental treatment abroad — procedure, flights, and recovery stay — against your local quote. Transparent 2026 pricing across Mexico, Turkey, Thailand, Costa Rica, and Hungary.
           </p>
 
           {/* Dual Action CTA Buttons */}
@@ -361,11 +359,11 @@ export default function App() {
 
             <button
               type="button"
-              onClick={handlePhoneClick}
+              onClick={handleHowItWorksClick}
               className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white dark:bg-[#111C38] hover:bg-slate-50 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold text-sm sm:text-base transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5 active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
             >
-              <Phone className="w-4 h-4 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform" />
-              <span>Call (555) 567-8901</span>
+              <span>See how it works</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
@@ -373,7 +371,7 @@ export default function App() {
           <div className="pt-2">
             <p className="text-[11px] uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 mb-2 flex items-center justify-center gap-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              Popular High-Volume Searches (Click to Auto-Calculate):
+              Popular comparisons:
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2">
               <button
@@ -381,35 +379,35 @@ export default function App() {
                 onClick={() => handleLoadDestinationInCalc('Turkey', 'all_on_4')}
                 className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#111C38] hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                🇹🇷 All on 4 Turkey Cost
+                All on 4 Turkey Cost
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadDestinationInCalc('Mexico', 'single_implant')}
                 className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#111C38] hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                🇲🇽 Dental Implants Mexico Cost
+                Dental Implants Mexico Cost
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadDestinationInCalc('CostaRica', 'all_on_4')}
                 className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#111C38] hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                🇨🇷 All on 4 Costa Rica Cost
+                All on 4 Costa Rica Cost
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadDestinationInCalc('Hungary', 'single_implant')}
                 className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#111C38] hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                🇭🇺 Dental Implants Hungary Cost
+                Dental Implants Hungary Cost
               </button>
               <button
                 type="button"
                 onClick={() => handleLoadDestinationInCalc('Thailand', 'all_on_4')}
                 className="px-3 py-1.5 rounded-lg bg-white dark:bg-[#111C38] hover:bg-blue-50 dark:hover:bg-blue-900/30 border border-slate-200 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
               >
-                🇹🇭 All on 4 Thailand Cost
+                All on 4 Thailand Cost
               </button>
             </div>
           </div>
@@ -422,11 +420,11 @@ export default function App() {
             </div>
             <div className="flex items-center gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
-              <span>JCI & ISO 9001 Hospital Verification</span>
+              <span>Flights & recovery hotels included</span>
             </div>
             <div className="flex items-center gap-1.5 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
               <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
-              <span>Straumann & Nobel Biocare Passports</span>
+              <span>Free to use · no signup required</span>
             </div>
           </div>
 
@@ -518,9 +516,9 @@ export default function App() {
           </div>
         </section>
 
-        {/* Testimonials: Real Patient Case Studies */}
-        <section id="testimonials" className="scroll-mt-24">
-          <TestimonialsSection />
+        {/* Trust: honest methodology instead of fabricated testimonials */}
+        <section id="trust" className="scroll-mt-24">
+          <TrustSection onOpenMethodology={() => setMethodologyModalOpen(true)} />
         </section>
 
         {/* About: Independent Healthcare Benchmark */}
