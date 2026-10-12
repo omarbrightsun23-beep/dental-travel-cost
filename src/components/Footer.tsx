@@ -22,7 +22,7 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   return (
-    <footer className="border-t border-slate-200 dark:border-slate-800 bg-[#0B132B] mt-24 py-14 text-xs text-slate-400">
+    <footer className="border-t border-slate-200 dark:border-slate-800 bg-[#0B132B] py-14 text-xs text-slate-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800">
@@ -51,13 +51,11 @@ export const Footer: React.FC<FooterProps> = ({
               </span>
             </a>
             <p className="text-slate-400 max-w-md leading-relaxed text-xs">
-              The independent international procedure cost benchmark and patient protection registry. We provide unbiased, all-in cost transparency factoring clinic fees, return flights, recovery accommodations, and verified JCI/ISO clinical accreditations.
+              An independent international procedure cost benchmark. We publish unbiased, all-in cost transparency — clinic fees, return flights, and recovery accommodation — with an open methodology you can inspect.
             </p>
             <div className="pt-2 text-[11px] text-slate-500 space-y-0.5">
-              <p>📍 1000 Brickell Ave, Suite 710, Miami, FL 33131</p>
-              <p>📞 Patient Desk: (555) 567-8901 · Daily 7am–9pm EST</p>
-              <p>
-                ✉️ Inquiries:{' '}
+              <p className="flex items-center gap-1.5">
+                <Mail className="w-3.5 h-3.5" />
                 <a
                   href="mailto:contact@dentaltravelcost.com"
                   className="text-blue-400 hover:text-blue-300 hover:underline"
@@ -101,11 +99,11 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li>
                 <a
-                  href="#testimonials"
-                  onClick={(e) => handleScrollTo(e, 'testimonials')}
+                  href="#trust"
+                  onClick={(e) => handleScrollTo(e, 'trust')}
                   className="hover:text-blue-400 hover:translate-x-0.5 transition-all text-left cursor-pointer inline-flex items-center gap-1.5"
                 >
-                  <span>Patient Testimonials</span>
+                  <span>Why Trust Us</span>
                 </a>
               </li>
               <li>

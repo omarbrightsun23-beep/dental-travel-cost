@@ -1,3 +1,4 @@
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import React from 'react';
 import { CurrencyCode } from '../types';
 import { PROCEDURES, DESTINATIONS, CURRENCIES } from '../data/procedures';
@@ -18,17 +19,22 @@ export const CompareAllModal: React.FC<CompareAllModalProps> = ({
   fxRates,
   onSelectDestination
 }) => {
+  useEscapeKey(isOpen, onClose);
   if (!isOpen) return null;
 
   const rate = fxRates[currentCurrency] || CURRENCIES[currentCurrency].defaultRate;
   const symbol = CURRENCIES[currentCurrency].symbol;
 
   const sampleProc = PROCEDURES[0];
-  const domesticPrice = Math.round((sampleProc.domesticUSD[currentCurrency] || 28000) * rate);
+  // domesticUSD values are native home-currency prices (no FX conversion).
+  const domesticNative = sampleProc.domesticUSD[currentCurrency];
+  const domesticPrice = domesticNative != null ? Math.round(domesticNative) : Math.round(28000 * rate);
 
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="max-w-4xl w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col animate-fade-in">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      onClick={onClose}>
+      <div className="max-w-4xl w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl relative my-8 max-h-[90vh] flex flex-col animate-scale-in"
+      onClick={(e) => e.stopPropagation()}>
         
         {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4 mb-4 shrink-0">
@@ -68,8 +74,10 @@ export const CompareAllModal: React.FC<CompareAllModalProps> = ({
               {DESTINATIONS.map((dest) => {
                 const surgeryUSD = sampleProc.abroadUSD[dest.id] || 5000;
                 const surgeryPrice = Math.round(surgeryUSD * rate);
-                const flightUSD = dest.flightCostUSD[currentCurrency] || dest.flightCostUSD.USD || 700;
-                const flightPrice = Math.round(flightUSD * rate);
+                const flightNative = dest.flightCostUSD[currentCurrency];
+                const flightPrice = flightNative != null
+                  ? Math.round(flightNative)
+                  : Math.round((dest.flightCostUSD.USD || 700) * rate);
                 const hotelPrice = Math.round(dest.hotelRatesUSD.premium * 6 * rate);
                 const miscPrice = Math.round(250 * rate);
                 const allIn = surgeryPrice + flightPrice + hotelPrice + miscPrice;

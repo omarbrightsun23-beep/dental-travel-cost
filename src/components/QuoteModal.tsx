@@ -1,6 +1,7 @@
+import { useEscapeKey } from '../hooks/useEscapeKey';
 import React, { useState } from 'react';
 import { CalculationResult } from '../types';
-import { X, CheckCircle2, ShieldCheck, Send, Clock, Sparkles } from 'lucide-react';
+import { X, CheckCircle2, ShieldCheck, Send, Clock, Sparkles, Lock } from 'lucide-react';
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -27,14 +28,12 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
 
-  if (!isOpen) return null;
-
   const targetProcedure = initialData?.procedureName || procedureHint || 'All-on-4 Dental Implants';
   const targetDestination = initialData?.destinationName || destinationHint || 'Mexico (Los Algodones)';
 
   // Free lead delivery: posts the quote request to the site owner's inbox.
   // No backend required. First submission triggers a one-click activation email.
-  const LEAD_ENDPOINT = 'https://formsubmit.co/ajax/omarbrightsun23@gmail.com';
+  const LEAD_ENDPOINT = 'https://formsubmit.co/ajax/contact@dentaltravelcost.com';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -76,9 +75,15 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
     onClose();
   };
 
+  useEscapeKey(isOpen, handleResetAndClose);
+
+  if (!isOpen) return null;
+
   return (
-    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
-      <div className="max-w-lg w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl relative my-8 animate-fade-in">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto"
+      onClick={handleResetAndClose}>
+      <div className="max-w-lg w-full bg-white dark:bg-[#111C38] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-2xl relative my-8 animate-scale-in"
+      onClick={(e) => e.stopPropagation()}>
         
         {/* Close Button */}
         <button
@@ -199,8 +204,9 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 />
               </div>
 
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug">
-                🔒 Your privacy is strictly protected. We only share clinical notes with JCI-accredited partner hospitals adhering to HIPAA and international patient privacy directives.
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-snug flex items-start gap-1.5">
+                <Lock className="w-3 h-3 mt-0.5 shrink-0" />
+                <span>Your privacy is strictly protected. We only share clinical notes with JCI-accredited partner hospitals adhering to HIPAA and international patient privacy directives.</span>
               </p>
 
               <button
