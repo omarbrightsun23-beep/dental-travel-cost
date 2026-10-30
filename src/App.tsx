@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Calculator } from './components/Calculator';
 import { DestinationMatrix } from './components/DestinationMatrix';
 import { BenchmarkTableSection } from './components/BenchmarkTableSection';
+import { ClinicExpertTurkeySection } from './components/ClinicExpertTurkeySection';
 import { CorridorsSection } from './components/CorridorsSection';
 import { StaySection } from './components/StaySection';
 import { TravelInsuranceSection } from './components/TravelInsuranceSection';
@@ -489,6 +490,13 @@ export default function App() {
         {/* 2026 Global Dental Travel Cost Comparison Benchmarks Table */}
         <Reveal>
           <BenchmarkTableSection
+            onSelectRoute={(destId, procId) => handleLoadDestinationInCalc(destId, procId)}
+          />
+        </Reveal>
+
+        {/* Clinic Expert Turkey direct prices (EUR) */}
+        <Reveal>
+          <ClinicExpertTurkeySection
             onSelectRoute={(destId, procId) => handleLoadDestinationInCalc(destId, procId)}
           />
         </Reveal>

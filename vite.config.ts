@@ -19,6 +19,10 @@ export default defineConfig(() => {
     { key: 'termsAndConditions', relPath: 'terms-and-conditions/index.html' },
     { key: 'disclaimer', relPath: 'disclaimer/index.html' },
     { key: 'contact', relPath: 'contact/index.html' },
+    { key: 'dentalImplantsAbroadCost', relPath: 'dental-implants-abroad-cost/index.html' },
+    { key: 'allOn4TurkeyCost', relPath: 'all-on-4-turkey-cost/index.html' },
+    { key: 'allOn6TurkeyCost', relPath: 'all-on-6-turkey-cost/index.html' },
+    { key: 'porcelainVeneersTurkeyCost', relPath: 'porcelain-veneers-turkey-cost/index.html' },
   ];
 
   for (const page of optionalPages) {
