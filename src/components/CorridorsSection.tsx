@@ -68,6 +68,11 @@ export const CorridorsSection: React.FC<CorridorsSectionProps> = ({ onSelectCorr
             <span>Calculate Mexico Trip Costs</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+          <p className="mt-3 text-center text-xs">
+            <a href="/hotels/mexico" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              Where to stay in Mexico →
+            </a>
+          </p>
         </article>
 
         {/* Corridor 2: UK & Ireland to Turkey & Hungary */}
@@ -112,6 +117,15 @@ export const CorridorsSection: React.FC<CorridorsSectionProps> = ({ onSelectCorr
             <span>Calculate Turkey Trip Costs</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+          <p className="mt-3 text-center text-xs">
+            <a href="/hotels/istanbul" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              Istanbul hotels →
+            </a>
+            {' · '}
+            <a href="/hotels/antalya" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              Antalya hotels →
+            </a>
+          </p>
         </article>
 
         {/* Corridor 3: Australia & NZ to Thailand & Bali */}
@@ -156,6 +170,11 @@ export const CorridorsSection: React.FC<CorridorsSectionProps> = ({ onSelectCorr
             <span>Calculate Thailand Trip Costs</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+          <p className="mt-3 text-center text-xs">
+            <a href="/hotels/bangkok" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              Where to stay in Bangkok →
+            </a>
+          </p>
         </article>
 
       </div>

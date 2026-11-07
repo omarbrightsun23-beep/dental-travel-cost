@@ -23,6 +23,10 @@ export default defineConfig(() => {
     { key: 'allOn4TurkeyCost', relPath: 'all-on-4-turkey-cost/index.html' },
     { key: 'allOn6TurkeyCost', relPath: 'all-on-6-turkey-cost/index.html' },
     { key: 'porcelainVeneersTurkeyCost', relPath: 'porcelain-veneers-turkey-cost/index.html' },
+    { key: 'hotelsIstanbul', relPath: 'hotels/istanbul/index.html' },
+    { key: 'hotelsAntalya', relPath: 'hotels/antalya/index.html' },
+    { key: 'hotelsMexico', relPath: 'hotels/mexico/index.html' },
+    { key: 'hotelsBangkok', relPath: 'hotels/bangkok/index.html' },
   ];
 
   for (const page of optionalPages) {

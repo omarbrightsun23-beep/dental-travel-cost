@@ -16,6 +16,13 @@ import {
 } from 'lucide-react';
 import { PolicyTab } from './PolicyModal';
 
+/** Recovery-hotel guides published on this site, keyed by destination id. */
+const HOTEL_GUIDES: Record<string, { path: string; label: string }> = {
+  Mexico: { path: '/hotels/mexico', label: 'Mexico' },
+  Turkey: { path: '/hotels/istanbul', label: 'Istanbul, Turkey' },
+  Thailand: { path: '/hotels/bangkok', label: 'Bangkok, Thailand' },
+};
+
 interface CalculatorProps {
   currentCurrency: CurrencyCode;
   fxRates: Record<CurrencyCode, number>;
@@ -618,6 +625,16 @@ export const Calculator: React.FC<CalculatorProps> = ({
                 {symbol}{totalHotel.toLocaleString()}
               </span>
             </div>
+            {HOTEL_GUIDES[selectedDestinationId] && (
+              <div className="px-5 pb-3 -mt-1">
+                <a
+                  href={HOTEL_GUIDES[selectedDestinationId].path}
+                  className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  See recovery hotels in {HOTEL_GUIDES[selectedDestinationId].label} →
+                </a>
+              </div>
+            )}
 
             {/* Transfers & Meds */}
             <div className="px-5 py-3.5 flex justify-between items-center hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition">
