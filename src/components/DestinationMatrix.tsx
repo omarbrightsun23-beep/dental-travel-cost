@@ -3,6 +3,13 @@ import { CurrencyCode } from '../types';
 import { PROCEDURES, DESTINATIONS, CURRENCIES } from '../data/procedures';
 import { Plane, Building, ShieldCheck, Check, Sparkles, ArrowRight } from 'lucide-react';
 
+/** Recovery-hotel guides published on this site, keyed by destination id. */
+const HOTEL_GUIDES: Record<string, string> = {
+  Mexico: '/hotels/mexico',
+  Turkey: '/hotels/istanbul',
+  Thailand: '/hotels/bangkok',
+};
+
 interface DestinationMatrixProps {
   currentCurrency: CurrencyCode;
   fxRates: Record<CurrencyCode, number>;
@@ -158,6 +165,16 @@ export const DestinationMatrix: React.FC<DestinationMatrixProps> = ({
                       {symbol}{hotelPrice.toLocaleString()}
                     </span>
                   </div>
+                  {HOTEL_GUIDES[dest.id] && (
+                    <div className="text-[11px]">
+                      <a
+                        href={HOTEL_GUIDES[dest.id]}
+                        className="font-bold text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        Where to stay in {dest.name} →
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* All In Abroad Highlight */}

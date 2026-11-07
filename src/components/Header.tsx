@@ -27,6 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   const navLinks = [
     { label: 'About', href: '/about', anchor: '#about' },
     { label: 'Pricing', href: '#pricing', anchor: '#pricing' },
+    { label: 'Where to Stay', href: '/hotels/istanbul', anchor: '#where-to-stay' },
     { label: 'Standards', href: '#clinical-guide', anchor: '#clinical-guide' },
     { label: 'Services', href: '#services', anchor: '#services' },
     { label: 'Blog', href: '#blog', anchor: '#blog' },

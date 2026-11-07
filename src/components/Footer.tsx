@@ -212,6 +212,14 @@ export const Footer: React.FC<FooterProps> = ({
                   Contact Coordination Desk
                 </a>
               </li>
+              <li>
+                <a
+                  href="/hotels/istanbul"
+                  className="hover:text-blue-400 hover:translate-x-0.5 transition-all text-left cursor-pointer"
+                >
+                  Where to Stay — Hotel Guides
+                </a>
+              </li>
             </ul>
           </div>
 
