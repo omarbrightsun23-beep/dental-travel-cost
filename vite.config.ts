@@ -27,6 +27,8 @@ export default defineConfig(() => {
     { key: 'hotelsAntalya', relPath: 'hotels/antalya/index.html' },
     { key: 'hotelsMexico', relPath: 'hotels/mexico/index.html' },
     { key: 'hotelsBangkok', relPath: 'hotels/bangkok/index.html' },
+    { key: 'guidesTurkey72Hour', relPath: 'guides/turkey-72-hour-dental-trip/index.html' },
+    { key: 'guidesMexicoBorderCrossing', relPath: 'guides/mexico-border-crossing-dental-guide/index.html' },
   ];
 
   for (const page of optionalPages) {
