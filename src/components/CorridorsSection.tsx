@@ -72,6 +72,10 @@ export const CorridorsSection: React.FC<CorridorsSectionProps> = ({ onSelectCorr
             <a href="/hotels/mexico" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
               Where to stay in Mexico →
             </a>
+            {' · '}
+            <a href="/guides/mexico-border-crossing-dental-guide" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              Border-crossing guide →
+            </a>
           </p>
         </article>
 
@@ -124,6 +128,10 @@ export const CorridorsSection: React.FC<CorridorsSectionProps> = ({ onSelectCorr
             {' · '}
             <a href="/hotels/antalya" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
               Antalya hotels →
+            </a>
+            {' · '}
+            <a href="/guides/turkey-72-hour-dental-trip" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
+              The first 72 hours →
             </a>
           </p>
         </article>
