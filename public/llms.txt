@@ -47,10 +47,10 @@ DentalTravelCost provides transparent, all-in procedural cost modeling comparing
 - **Australasia**: Australia & New Zealand to Thailand (Bangkok, Phuket) and Bali. High-volume hospital dentistry combined with recovery tourism.
 
 ## Official Site Links
-- Home & Calculator: https://dentaltravelcost.com/
-- About & Methodology: https://dentaltravelcost.com/about
-- Clinical Standards: https://dentaltravelcost.com/#clinical-guide
-- Contact Desk: https://dentaltravelcost.com/contact
-- Privacy Policy: https://dentaltravelcost.com/privacy-policy
-- Terms & Conditions: https://dentaltravelcost.com/terms-and-conditions
-- Disclaimer: https://dentaltravelcost.com/disclaimer
+- Home & Calculator: https://www.dentaltravelcost.com/
+- About & Methodology: https://www.dentaltravelcost.com/about
+- Clinical Standards: https://www.dentaltravelcost.com/#clinical-guide
+- Contact Desk: https://www.dentaltravelcost.com/contact
+- Privacy Policy: https://www.dentaltravelcost.com/privacy-policy
+- Terms & Conditions: https://www.dentaltravelcost.com/terms-and-conditions
+- Disclaimer: https://www.dentaltravelcost.com/disclaimer
