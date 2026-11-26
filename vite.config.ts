@@ -24,6 +24,7 @@ export default defineConfig(() => {
     { key: 'allOn6TurkeyCost', relPath: 'all-on-6-turkey-cost/index.html' },
     { key: 'porcelainVeneersTurkeyCost', relPath: 'porcelain-veneers-turkey-cost/index.html' },
     { key: 'dentalWorkAbroadGoesWrong', relPath: 'dental-work-abroad-goes-wrong/index.html' },
+    { key: 'howManyTripsForDentalImplantsAbroad', relPath: 'how-many-trips-for-dental-implants-abroad/index.html' },
     { key: 'hotelsIstanbul', relPath: 'hotels/istanbul/index.html' },
     { key: 'hotelsAntalya', relPath: 'hotels/antalya/index.html' },
     { key: 'hotelsMexico', relPath: 'hotels/mexico/index.html' },
