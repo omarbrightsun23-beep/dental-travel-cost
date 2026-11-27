@@ -26,6 +26,7 @@ export default defineConfig(() => {
     { key: 'dentalWorkAbroadGoesWrong', relPath: 'dental-work-abroad-goes-wrong/index.html' },
     { key: 'howManyTripsForDentalImplantsAbroad', relPath: 'how-many-trips-for-dental-implants-abroad/index.html' },
     { key: 'allOn4VsAllOn6', relPath: 'all-on-4-vs-all-on-6/index.html' },
+    { key: 'trueTotalCostOfOneDentalImplantAbroad', relPath: 'true-total-cost-of-one-dental-implant-abroad/index.html' },
     { key: 'hotelsIstanbul', relPath: 'hotels/istanbul/index.html' },
     { key: 'hotelsAntalya', relPath: 'hotels/antalya/index.html' },
     { key: 'hotelsMexico', relPath: 'hotels/mexico/index.html' },
